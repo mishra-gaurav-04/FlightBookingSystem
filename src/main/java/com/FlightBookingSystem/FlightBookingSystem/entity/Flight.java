@@ -10,6 +10,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,11 +32,17 @@ public class Flight {
 
     @Column
     private String flightNumber;
-
+    
+    @OneToOne
+    @JoinColumn(name="airport_id",referencedColumnName="id")
     private Airplane airplane;
 
+    @OneToOne
+    @JoinColumn(name="arrival_airport_id",referencedColumnName="id")
     private Airport arrivalAirport;
-    
+
+    @OneToOne
+    @JoinColumn(name="departure_airport_id",referencedColumnName="id")
     private Airport departureAirport;
 
     @Column
