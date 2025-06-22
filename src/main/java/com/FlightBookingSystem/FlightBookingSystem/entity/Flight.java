@@ -30,11 +30,11 @@ public class Flight {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false,unique = true)
     private String flightNumber;
     
     @OneToOne
-    @JoinColumn(name="airport_id",referencedColumnName="id")
+    @JoinColumn(name="airplane_id",referencedColumnName="id")
     private Airplane airplane;
 
     @OneToOne
@@ -45,21 +45,18 @@ public class Flight {
     @JoinColumn(name="departure_airport_id",referencedColumnName="id")
     private Airport departureAirport;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime arrivalTime;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime departureTime;
 
-    @Column
+    @Column(nullable = false)
     private Double price;
 
     @Column
     private String boardingGate = null;
-
-    @Column
-    private Long totalSeats;
-
+    
     @CreationTimestamp
     private LocalDateTime createdAt;
 

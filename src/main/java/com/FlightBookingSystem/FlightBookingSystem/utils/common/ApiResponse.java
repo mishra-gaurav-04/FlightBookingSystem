@@ -9,13 +9,13 @@ import lombok.Setter;
 @Builder
 public class ApiResponse<T> {
     private boolean success;
-    private int status;
+    private int code;
     private String message;
     private T data;
 
-    public ApiResponse(boolean success,int status,String message,T data){
+    public ApiResponse(boolean success,int code,String message,T data){
         this.success = success;
-        this.status = status;
+        this.code = code;
         this.message = message;
         this.data = data;
     }
